@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PORTOFOLIO RAFSYAN</title>
+</head>
+<body>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Mohammad Rafsyan - Portfolio</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+  /* Reset */
+  * {
+    margin: 0; padding: 0; box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Poppins', sans-serif;
+    background-color: black;
+    color: white;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Logo */
+  #logo {
+    position: fixed;
+    top: 20px;
+    left: 30px;
+    font-size: 2.6rem;
+    font-weight: 800;
+    color: #70bfff;
+    letter-spacing: 9px;
+    font-family: 'Poppins', sans-serif;
+    user-select: none;
+    z-index: 1000;
+  }
+
+  /* Main layout container */
+  .main-content {
+    display: flex;
+    max-width: 1100px;
+    margin: 100px auto 60px;
+    padding: 0 20px;
+    gap: 48px;
+    flex-wrap: wrap;
+    align-items: flex-start;
+  }
+
+  /* Left panel photo */
+  .photo-container {
+    flex: 0 0 280px;
+    max-width: 280px;
+    border-radius: 18px;
+    box-shadow: 0 0 35px 6px aqua;
+    overflow: hidden;
+    border: 4px solid aqua;
+    transition: transform 0.3s ease;
+  }
+  .photo-container:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 45px 10px aqua;
+  }
+  .photo-container img {
+    width: 100%;
+    display: block;
+  }
+
+  /* Right panel content */
+  .content {
+    flex: 1;
+    min-width: 320px;
+  }
+
+  /* Name and tagline */
+  header {
+    margin-bottom: 30px;
+  }
+  header h1 {
+    font-size: 3.8rem;
+    font-weight: 700;
+    color: aqua;
+    margin-bottom: 10px;
+    text-shadow: 0 0 12px aqua;
+  }
+  header p {
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: white;
+  }
+
+  /* Section styling */
+  section {
+    margin-bottom: 48px;
+    background: #101a2c;
+    border-radius: 16px;
+    padding: 30px 36px;
+    box-shadow: 0 0 35px 4px aqua;
+    transition: box-shadow 0.3s ease;
+  }
+  section:hover {
+    box-shadow: 0 0 50px 6px aqua;
+  }
+  section h2 {
+    color: white;
+    font-size: 2.6rem;
+    margin-bottom: 26px;
+    font-weight: 700;
+    border-bottom: 3px solid aqua;
+    padding-bottom: 8px;
+  }
+  section p {
+    font-size: 1.14rem;
+    color:white;
+    line-height: 1.6;
+  }
+
+  /* Portfolio grid */
+  #portfolio {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(280px, 1fr));
+    gap: 28px;
+  }
+  .project-card {
+    background-color: black;
+    border-radius: 14px;
+    padding: 22px 26px;
+    box-shadow: inset 0 0 10px aqua;
+    cursor: pointer;
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+  }
+  .project-card:hover {
+    transform: translateY(-10px) scale(1.04);
+    box-shadow: 0 8px 38px 6px aqua;
+  }
+  .project-card h3 {
+    font-size: 1.55rem;
+    margin-bottom: 12px;
+    color: white;
+  }
+  .project-card p {
+    font-size: 1rem;
+    color: white;
+    font-weight: 300;
+    min-height: 58px;
+  }
+
+  /* Skills with animated bars & labels */
+  #skills ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  #skills li {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: white;
+  }
+  .skill-bar {
+    position: relative;
+    height: 16px;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 8px;
+    box-shadow: inset 0 0 6px aqua;
+  }
+  .skill-progress {
+    position: absolute;
+    height: 100%;
+    background: linear-gradient(90deg, black, aqua);
+    border-radius: 10px;
+    transition: width 1.3s ease-in-out;
+    width: 0;
+  }
+  .skill-label {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-weight: 700;
+    color: black;
+    text-shadow: none;
+    font-size: 0.87rem;
+  }
+
+  /* Education timeline style */
+  #education ul {
+    list-style: none;
+    position: relative;
+    padding-left: 20px;
+  }
+  #education ul::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 7px;
+    width: 4px;
+    height: 100%;
+    background: aqua;
+    border-radius: 3px;
+  }
+  #education li {
+    position: relative;
+    padding-left: 25px;
+    margin-bottom: 24px;
+    color: aqua;
+  }
+  #education li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 6px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background:aqua;
+    box-shadow: 0 0 8px ,aqua;
+  }
+  #education li strong {
+    color: aqua;
+  }
+  #education li span {
+    color: white;
+    font-size: 0.94rem;
+    display: block;
+    margin-top: 4px;
+  }
+
+  /* Contact with styled buttons and icons */
+  #contact {
+    text-align: center;
+  }
+  #contact .contact-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: linear-gradient(90deg, black, aqua);
+    color: #000;
+    padding: 16px 36px;
+    margin: 12px 16px;
+    border-radius: 40px;
+    font-weight: 700;
+    font-size: 1.15rem;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 10px 22px aqua;
+    transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+    text-decoration: none;
+    user-select: none;
+    letter-spacing: 0.03em;
+  }
+  #contact .contact-btn:hover {
+    background: linear-gradient(90deg, aqua,white);
+    box-shadow: 0 14px 32px white;
+    transform: scale(1.07);
+  }
+  #contact .contact-btn svg {
+    width: 22px;
+    height: 22px;
+    fill: rgba(235, 225, 225, 0.966);
+  }
+  #contact .contact-btn:hover svg {
+    fill: black;
+  }
+
+  /* Responsive */
+  @media (max-width: 880px) {
+    .main-content {
+      flex-direction: column;
+      margin: 120px 20px 40px;
+      padding: 0 10px;
+      gap: 36px;
+      align-items: center;
+    }
+    .photo-container {
+      max-width: 200px;
+      flex: 0 0 auto;
+    }
+    .content {
+      min-width: auto;
+      width: 100%;
+    }
+  }
+</style>
+</head>
+<body>
+
+  <div id="logo" aria-label="Logo MR">MR</div>
+
+  <main class="main-content" role="main">
+
+    <aside class="photo-container" aria-label="Photo of Mohammad Rafsyan">
+      <img src="syukur.pribadi (1).png" alt="Portrait of Mohammad Rafsyan" />
+    </aside>
+
+    <section class="content">
+
+      <header>
+        <h1>Mohammad Rafsyan</h1>
+        <p>saya adalah seorang hacker</p>
+      </header>
+
+      <section id="about" aria-labelledby="about-title">
+        <h2 id="about-title">About Me</h2>
+        <p>Saya Mohammad Rafsyan, pengembang web 
+            dengan keahlian dalam teknologi frontend dan backend. </p>
+      </section>
+
+      <section id="portfolio" aria-labelledby="portfolio-title">
+        <h2 id="portfolio-title">Portfolio</h2>
+        <div class="project-card" tabindex="0" role="article" aria-label="Project: Custom CRM">
+          <h3>Custom CRM</h3>
+          <p>Sebuah aplikasi Customer Relationship Management
+             yang saya kembangkan menggunakan React dan Node.js.
+             </p>
+        </div>                                                                              
+        <div class="project-card" tabindex="0" role="article" aria-label="Project: E-commerce Website">
+          <h3>E-commerce Website</h3>
+          <p>Sebuah platform toko online yang lengkap dengan fitur katalog produk, keranjang belanja, dan proses pembayaran yang aman.
+             </p>
+        </div>
+        <div class="project-card" tabindex="0" role="article" aria-label="Project: Portfolio Redesign">
+          <h3>Portfolio Redesign</h3>
+          <p>Proyek pengembangan ulang portofolio pribadi dengan tampilan yang lebih modern dan responsif menggunakan Next.
+            js dan styled-components.
+            </p>
+        </div>
+        <div class="project-card" tabindex="0" role="article" aria-label="Project: Data Dashboard">
+          <h3>Data Dashboard</h3>
+          <p>Dashboard interaktif yang menampilkan visualisasi data menggunakan D3.js dengan pembaruan data real-time. 
+            </p>
+        </div>
+      </section>
+
+      <section id="skills" aria-labelledby="skills-title">
+        <h2 id="skills-title">Skills</h2>
+        <ul>
+          <li>
+            JavaScript
+            <div class="skill-bar"><div class="skill-progress" style="width: 90%;"></div><span class="skill-label">90%</span></div>
+          </li>
+          <li>
+            React & Redux
+            <div class="skill-bar"><div class="skill-progress" style="width: 85%;"></div><span class="skill-label">85%</span></div>
+          </li>
+          <li>
+            Node.js & Express
+            <div class="skill-bar"><div class="skill-progress" style="width: 80%;"></div><span class="skill-label">80%</span></div>
+          </li>
+          <li>
+            HTML5 & CSS3
+            <div class="skill-bar"><div class="skill-progress" style="width: 95%;"></div><span class="skill-label">95%</span></div>
+          </li>
+          <li>
+            Sass & Styled Components
+            <div class="skill-bar"><div class="skill-progress" style="width: 75%;"></div><span class="skill-label">75%</span></div>
+          </li>
+          <li>
+            Git & GitHub
+            <div class="skill-bar"><div class="skill-progress" style="width: 90%;"></div><span class="skill-label">90%</span></div>
+          </li>
+        </ul>
+      </section>
+
+      <section id="education" aria-labelledby="education-title">
+        <h2 id="education-title">Education</h2>
+        <ul>
+          <li>
+            <strong>SMP</strong>
+            <span>SMPN SATU ATAP EKOREKO (2021 - 2024)</span>
+            <p>pada tahu 2021-2024, saya mulai belajar menjadi hacker</p>
+          </li>
+          <li>
+            <strong>MA</strong>
+            <span>MAKN ENDE (2024-2027)</span>
+            <p>Pada tahun 2024-2027, saya suudah menjadi hacker</p>
+          </li>
+        </ul>
+      </section>
+
+      <section id="contact" aria-labelledby="contact-title">
+        <h2 id="contact-title">Contact Me</h2>
+        <a href="mailto:mohammad.rafsyan@example.com" class="contact-btn" aria-label="Send an email to Mohammad Rafsyan">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M2 4a2 2 0 012-2h16a2 2 0 012 2v16a2 2 0 01-2 2H4a2 2 0 01-2-2V4zm2.5 1v.511L12 12.882l7.5-7.37V5H4.5zm0 2.409v11.091h15V6.413L12 14.12 4.5 6.409z"/>
+          </svg>
+          Email
+        </a>
+        <a href="https://linkedin.com/in/mohammadrafsyan" target="_blank" rel="noopener noreferrer" class="contact-btn" aria-label="LinkedIn profile of Mohammad Rafsyan">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M4.98 3.5C4.98 4.88 3.88 6.06 2.5 6.06S0 4.88 0 3.5 1.1 1 2.5 1 4.98 2.12 4.98 3.5zM0 8.2h5v14H0v-14zm7.21 0h4.71v1.89h.07c.66-1.26 2.28-2.59 4.7-2.59 5.03 0 5.96 3.26 5.96 7.52V22h-5v-6.52c0-1.56-.03-3.57-2.17-3.57-2.17 0-2.5 1.7-2.5 3.45V22h-5v-14z"/>
+          </svg>
+          LinkedIn
+        </a>
+        <a href="https://github.com/mohammadrafsyan" target="_blank" rel="noopener noreferrer" class="contact-btn" aria-label="GitHub profile of Mohammad Rafsyan">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 0a12 12 0 00-3.79 23.39c.6.11.82-.26.82-.58v-2.1c-3.34.73-4.04-1.61-4.04-1.61a3.18 3.18 0 00-1.34-1.76c-1.1-.75.08-.73.08-.73a2.52 2.52 0 011.83 1.23 2.56 2.56 0 003.5 1 2.55 2.55 0 01.76-1.6c-2.66-.3-5.46-1.34-5.46-5.94a4.62 4.62 0 011.23-3.21 4.28 4.28 0 01.11-3.17s1-.33 3.3 1.22a11.39 11.39 0 016 0c2.3-1.54 3.3-1.22 3.3-1.22a4.28 4.28 0 01.11 3.17 4.62 4.62 0 011.23 3.2c0 4.61-2.8 5.64-5.47 5.94a2.87 2.87 0 01.82 2.23v3.3c0 .32.22.7.82.58A12 12 0 0012 0z"/>
+          </svg>
+          GitHub
+        </a>
+      </section>
+
+    </section>
+
+  </main>
+
+<script>
+  // Animate skill bars on page load
+  window.addEventListener('DOMContentLoaded', () => {
+    const bars = document.querySelectorAll('.skill-progress');
+    bars.forEach(bar => {
+      const width = bar.style.width;
+      bar.style.width = '0';
+      setTimeout(() => {
+        bar.style.width = width;
+      }, 300);
+    });
+  });
+</script>
+
+</body>
+</html>
+
+
+</body>
+</html>
